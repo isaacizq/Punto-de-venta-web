@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e630a025-fa46-409a-a00f-b6dac3057acf">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     producto_venta.`idproducto_venta` AS producto_venta_idproducto_venta,
+     producto_venta.`productos_codigo` AS producto_venta_productos_codigo,
+     producto_venta.`factura_idfactura` AS producto_venta_factura_idfactura,
+     producto_venta.`cantidad` AS producto_venta_cantidad,
+     factura.`fecha` AS factura_fecha,
+     factura.`clientes_cedula` AS factura_clientes_cedula,
+     factura.`usuario_idusuario` AS factura_usuario_idusuario,
+     usuario.`nombre_completo` AS usuario_nombre_completo,
+     productos.`nombre` AS productos_nombre,
+     productos.`precio_unitario` AS productos_precio_unitario,
+     clientes.`nombre` AS clientes_nombre
+FROM
+     `factura` factura INNER JOIN `producto_venta` producto_venta ON factura.`idfactura` = producto_venta.`factura_idfactura`
+     INNER JOIN `productos` productos ON producto_venta.`productos_codigo` = productos.`codigo`
+     INNER JOIN `usuario` usuario ON factura.`usuario_idusuario` = usuario.`idusuario`
+     INNER JOIN `clientes` clientes ON factura.`clientes_cedula` = clientes.`cedula`]]>
+	</queryString>
+	<field name="producto_venta_idproducto_venta" class="java.lang.Integer"/>
+	<field name="producto_venta_productos_codigo" class="java.lang.Integer"/>
+	<field name="producto_venta_factura_idfactura" class="java.lang.Long"/>
+	<field name="producto_venta_cantidad" class="java.lang.Integer"/>
+	<field name="factura_fecha" class="java.sql.Date"/>
+	<field name="factura_clientes_cedula" class="java.lang.Integer"/>
+	<field name="factura_usuario_idusuario" class="java.lang.Integer"/>
+	<field name="usuario_nombre_completo" class="java.lang.String"/>
+	<field name="productos_nombre" class="java.lang.String"/>
+	<field name="productos_precio_unitario" class="java.lang.Integer"/>
+	<field name="clientes_nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
